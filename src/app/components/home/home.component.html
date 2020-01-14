@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="content">
+    <div class="movies-grid">
+      <div class="movie" *ngFor="let movie of loadedMovies">
+        <img src="../../../assets/alien.jpg" alt="Portada pelicula">
+        <div class="movie-buttons">
+          <div class="movie-seen">A</div>
+          <div class="not-interested">B</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-more">+</div>
+
+  </div>
+
+  <div class="control-panel">
+    <h2>Filtrar películas</h2>
+    <form class="filter-form" action="index.html" method="post">
+      <label for="">Género</label>
+      <input type="text" name="" value="">
+
+      <label for="">Fecha de estreno</label>
+      <input type="date" name="" value="">
+
+      <label for="">Valoración m´inima</label>
+      <input type="number" name="" value="">
+
+      <button type="button" name="button">FILTRAR</button>
+    </form>
+
+    <h2>Buscar película</h2>
+    <form class="look-for-film form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <div class="go-top"></div>
+  </div>
+</div>
