@@ -3,16 +3,42 @@
   padding: 0;
 }
 
+.carousel-inner{
+  background-color: black;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.carousel-inner img{
+  max-height: 500px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.main-container{
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2%;
+}
+
 .container{
   display: flex;
   min-width: 100%;
+  background-color: white;
+  border-left: 5px solid orange;
+  border-radius: 5px;
+  padding: 2%;
+}
+
+h1{
+  margin-bottom: 2%;
 }
 
 .content{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 72%;
+  width: 80%;
+  border-right: 2px solid darkorange;
 }
 
 .movies-grid{
@@ -29,36 +55,91 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+}
+
+.movie-poster{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    position: relative;
+}
+
+.movie-title{
+  color: white;
+  text-align: center;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.55);
+  position: absolute;
+  top: 0;
+  width: 75%;
+}
+
+.vote-average{
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.55);
+  position: absolute;
+  bottom: 0;
+  width: 75%;
 }
 
 .movie-buttons{
+  width: 75%;
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 10%;
+}
+
+.movie-buttons div{
+  color: white;
+  padding: 5% 10%;
+  margin: 2%;
+  border-radius: 10px;
+}
+
+.movie-seen{
+  background-color: green;
+}
+
+.not-interested{
+  background-color: #EE5C5C;
+}
+
+.favourite{
+  background-color: blue;
+}
+
+.control-panel-box{
+  width: 20%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 3% 0;
+  border-left: 3px solid orange;
 }
 
 .control-panel{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 28%;
-  border-left: 1px solid black;
-  padding-top: 2%;
-  position: fixed;
-  right: 0;
+  width: 100%;
+  position: sticky;
+  top: 5%;
+  overflow-y: scroll;
 }
 
 .filter-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
-  padding: 5%;
 }
 
 .look-for-film{
   display: flex;
   align-items: baseline;
-  width: 90%;
-  padding: 5%;
 }
 
 .look-for-film button{
@@ -74,15 +155,19 @@
 }
 
 form{
-  margin-bottom: 5%;
+  width: 80%;
+  margin-bottom: 15%;
+  padding-bottom: 10%;
+  border-bottom: 1px solid orange;
 }
 
 input{
   margin-bottom: 5%;
+  width: 80%;
 }
 
 h2{
-  margin-left: 5%;
+  margin-bottom: 2%;
 }
 
 .view-more{
@@ -95,6 +180,7 @@ h2{
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin: 3%;
 }
 
 .view-more:hover{
