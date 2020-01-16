@@ -42,6 +42,10 @@
   <div class="container">
     <div class="content">
       <h1>CATÁLOGO</h1>
+      <h2>{{subTitle}}</h2>
+      <div class="content-header-image">
+        <img src="{{headerImage}}">
+      </div>
       <div class="movies-grid">
         <div class="movie" *ngFor="let movie of loadedMovies">
           <div class="movie-poster">
@@ -58,15 +62,35 @@
       </div>
 
       <div class="view-more" (click)="viewMore()">+</div>
-
     </div>
 
     <div class="control-panel-box">
       <div class="control-panel">
-        <h2>Filtrar películas</h2>
-        <form class="filter-form" action="index.html" method="post">
+        <h3>Filtrar películas</h3>
+        <form (ngSubmit)="filterMovies()" class="filter-form" action="index.html" method="post">
           <label for="">Género</label>
-          <input type="text" name="" value="">
+          <select [(ngModel)]="selectedGenre" type="text" name="selectedGenre">
+           <option value="Action">Accion</option>
+           <option value="Adventure">Aventuras</option>
+           <option value="Animation">Animacion</option>
+           <option value="Comedy">Comedia</option>
+           <option value="Crime">Crimen</option>
+           <option value="Documentary">Documental</option>
+           <option value="Drama">Drama</option>
+           <option value="Family">Familia</option>
+           <option value="Fantasy">Fantasía</option>
+           <option value="History">Historia</option>
+           <option value="Horror">Terror</option>
+           <option value="Music">Música</option>
+           <option value="Mistery">Misterio</option>
+           <option value="Romance">Romance</option>
+           <option value="Science Fiction">Ciencia Ficción</option>
+           <option value="TV Movie">TV Movie</option>
+           <option value="Thriller">Thriller</option>
+           <option value="War">Bélica</option>
+           <option value="Western">Western</option>
+           <option value="All Movies" selected>Todas las películas</option>
+          </select>
 
           <label for="">Fecha de estreno</label>
           <input type="date" name="" value="">
@@ -74,10 +98,10 @@
           <label for="">Valoración m´inima</label>
           <input type="number" name="" value="">
 
-          <button type="button" name="button">FILTRAR</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="button">FILTRAR</button>
         </form>
 
-        <h2>Buscar película</h2>
+        <h3>Buscar película</h3>
         <form class="look-for-film form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

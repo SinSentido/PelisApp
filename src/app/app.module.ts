@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/share/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './components/movie/movie.component';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MovieComponent } from './components/movie/movie.component';
     BrowserModule,
     AppRoutingModule,
     APP_ROUTING,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
