@@ -42,9 +42,11 @@
   <div class="container">
     <div class="content">
       <h1>CATÁLOGO</h1>
-      <h2>{{subTitle}}</h2>
       <div class="content-header-image">
         <img src="{{headerImage}}">
+        <div class="filter">
+          <h2>{{subTitle}}</h2>
+        </div>
       </div>
       <div class="movies-grid">
         <div class="movie" *ngFor="let movie of loadedMovies">
@@ -61,7 +63,12 @@
         </div>
       </div>
 
-      <div class="view-more" (click)="viewMore()">+</div>
+      <button *ngIf="loading" class="view-more btn btn-primary" type="button">
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      </button>
+      <button *ngIf="!loading" class="view-more btn btn-primary" type="button" (click)="viewMore()">
+        +
+      </button>
     </div>
 
     <div class="control-panel-box">
