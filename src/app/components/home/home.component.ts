@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TmdbService} from '../../services/tmdb.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,26 @@ import {TmdbService} from '../../services/tmdb.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  pageToShow = 1;
-
+  /*Variables related with the home title*/
   selectedGenre = "";
   subTitle = 'Todas las películas';
   headerImage = "https://s.studiobinder.com/wp-content/uploads/2019/09/Movie-Genres-Types-of-Movies-List-of-Genres-and-Categories-Header-StudioBinder.jpg";
+
+  /*Variables related with the load of movies*/
+  genreId = 0; //used to look for genre
+  nameToLookFor = ""; //used to search movies
+  pageToShow = 1;
   loading = true;
-  genreId = 0;
   movies: any[] = [];
   loadedMovies: any[] = [];
 
-  constructor(private tmdb: TmdbService) { }
+  /*Variables for the movie trailer*/
+  trailerSection = false;
+  ytURL = "https://www.youtube.com/embed/";
+  movieTrailerKey = "";
+  trailerURL = "";
+
+  constructor(private tmdb: TmdbService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getMovies();
@@ -44,7 +53,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       for(let i=0; i<20; i++){
         this.loadedMovies.push(this.movies[i]);
-        this.loading = false; 
+        this.loading = false;
       }
     }, 2000);
   }
@@ -70,6 +79,36 @@ export class HomeComponent implements OnInit {
     else{
       this.getMovies();
     }
+  }
+
+  viewTrailer(id: string){
+    if(!this.trailerSection){
+      this.tmdb.requestMovieTrailer(id).subscribe(rqTrailer => this.movieTrailerKey = rqTrailer.results[0].key);
+      setTimeout(() => {
+        console.log(this.movieTrailerKey);
+            this.trailerURL = this.ytURL + this.movieTrailerKey;
+                  this.trailerSection = true;
+      },500);
+
+    }
+  }
+
+  searchMovie(){
+    this.pageToShow = 1;
+    this.loadedMovies = [];
+    if(this.nameToLookFor != ""){
+      this.tmdb.requestMoviesByName(this.nameToLookFor, this.pageToShow).subscribe(rqMovies => this.movies = rqMovies.results);
+      setTimeout(() => {
+        this.pushMovies();
+        console.log(this.movies);
+      }, 200);
+    }
+
+
+  }
+
+  closeTrailer(){
+    this.trailerSection = false;
   }
 
   selectGenre(){

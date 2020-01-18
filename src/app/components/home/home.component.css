@@ -29,7 +29,13 @@
 }
 
 h1{
-  margin-bottom: 2%;
+  display:inline-block;
+  color: orange;
+  padding: 3%;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color:  white;
 }
 
 h2{
@@ -132,7 +138,7 @@ h2{
 .movie-buttons{
   width: 75%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 10%;
 }
 
@@ -141,18 +147,40 @@ h2{
   padding: 5% 10%;
   margin: 2%;
   border-radius: 10px;
+  background-color: #C62E2E;
 }
 
-.movie-seen{
-  background-color: green;
+.movie-buttons div:hover{
+  cursor: pointer;
 }
 
-.not-interested{
-  background-color: #EE5C5C;
+.trailerSection{
+  position: fixed;
+  z-index: 999;
+  transition-duration: 2s;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid orange;
+  padding: 5%;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
 }
 
-.favourite{
-  background-color: blue;
+.trailerSection .spinner-border{
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%, -50%);
+}
+
+iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .control-panel-box{
@@ -170,7 +198,7 @@ h2{
   align-items: center;
   width: 100%;
   position: sticky;
-  top: 3%;
+  top: 5%;
 }
 
 .filter-form{
@@ -203,7 +231,7 @@ form{
   border-bottom: 1px solid orange;
 }
 
-input{
+input, select{
   margin-bottom: 5%;
   width: 80%;
 }
@@ -216,9 +244,17 @@ h3{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: orange;
   color: white;
   font-size: 3rem;
   width: 50px;
   height: 50px;
   margin: 3%;
+  border-radius: 50%;
+}
+
+.view-more .spinner-grow{
+  border: 1px solid orange;
+  width: 50px;
+  height: 50px;
 }

@@ -16,16 +16,16 @@ export class TmdbService {
     return this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.tmdbApiKey + '&language=en-US&page=' + page);
   }
 
-  requestLatestMovie(){
-
+  requestMoviesByName(name: string, page: string){
+    return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.tmdbApiKey + '&language=en-US&query=' + name + '&page=' + page + '&include_adult=false');
   }
 
   requestMoviesByGenre(genreId: string, page: string): any{
     return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=' + this.tmdbApiKey + '&with_genres=' + genreId + '&page=' + page);
-
   }
 
-  moviesToArray(moviesObj: object){
+  requestMovieTrailer(movieId: string): any{
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' + this.tmdbApiKey + '&language=en-US');
   }
 
 

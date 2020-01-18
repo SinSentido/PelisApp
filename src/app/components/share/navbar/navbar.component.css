@@ -1,3 +1,7 @@
+nav{
+  border-bottom: 2px solid orange;
+}
+
 .bar-navbar{
   display: flex;
   justify-content: space-between;
