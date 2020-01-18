@@ -16,7 +16,7 @@ export class TmdbService {
     return this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.tmdbApiKey + '&language=en-US&page=' + page);
   }
 
-  requestMoviesByName(name: string, page: string){
+  requestMoviesByName(name: string, page: string): any{
     return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.tmdbApiKey + '&language=en-US&query=' + name + '&page=' + page + '&include_adult=false');
   }
 
@@ -30,3 +30,4 @@ export class TmdbService {
 
 
 }
+ 

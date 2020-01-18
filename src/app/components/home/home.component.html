@@ -50,7 +50,7 @@
       </div>
       <div class="movies-grid">
         <div class="movie" *ngFor="let movie of loadedMovies">
-          <div class="movie-poster">
+          <div class="movie-poster" (click)="navigateToMovie(movie.id)">
             <img src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="Portada pelicula">
             <div class="movie-title">{{movie.title}}</div>
             <div class="vote-average">{{movie.vote_average}}</div>

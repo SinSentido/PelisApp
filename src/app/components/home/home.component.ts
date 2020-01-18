@@ -49,6 +49,24 @@ export class HomeComponent implements OnInit {
     }, 200);
   }
 
+  getMoviesByName(){
+    this.tmdb.requestMoviesByName(this.nameToLookFor, this.pageToShow.toString()).subscribe(rqMovies => this.movies = rqMovies.results);
+    setTimeout(() => {
+      this.pushMovies();
+      console.log(this.movies);
+    }, 200);
+  }
+
+  searchMovie(){
+    if(this.nameToLookFor != ""){
+      this.loadedMovies = [];
+      this.pageToShow = 1;
+      this.genreId = 0; //We set the genre to default because we are searching a movie not filtering
+      this.loading = true;
+      this.getMoviesByName();
+    }
+  }
+
   pushMovies(){
     setTimeout(() => {
       for(let i=0; i<20; i++){
@@ -64,6 +82,9 @@ export class HomeComponent implements OnInit {
     if(this.genreId != 0){
       this.getMoviesByGenre();
     }
+    else if(this.nameToLookFor != ""){
+      this.getMoviesByName();
+    }
     else{
       this.getMovies();
     }
@@ -73,10 +94,13 @@ export class HomeComponent implements OnInit {
     this.selectGenre();
     this.loadedMovies = [];
     this.pageToShow = 1;
+    this.nameToLookFor = ""; //We do set the name to look for a film to deafault because we are filtering not looking for a movie.
     if(this.genreId != 0){
+      this.loading = true;
       this.getMoviesByGenre();
     }
     else{
+      this.loading = true;
       this.getMovies();
     }
   }
@@ -93,22 +117,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  searchMovie(){
-    this.pageToShow = 1;
-    this.loadedMovies = [];
-    if(this.nameToLookFor != ""){
-      this.tmdb.requestMoviesByName(this.nameToLookFor, this.pageToShow).subscribe(rqMovies => this.movies = rqMovies.results);
-      setTimeout(() => {
-        this.pushMovies();
-        console.log(this.movies);
-      }, 200);
-    }
-
-
-  }
-
   closeTrailer(){
     this.trailerSection = false;
+  }
+
+  navigateToMovie(movieId: number){
+    console.log(movieId);
   }
 
   selectGenre(){
@@ -175,16 +189,19 @@ export class HomeComponent implements OnInit {
       case "Horror":{
         this.genreId = 27;
         this.subTitle = "Miedo";
+        this.headerImage = "https://s3.amazonaws.com/static.digg.com/images/01a3991c4381488c81bde89105db6e32_41d9c123656547458a378aec843330b9_header.jpeg";
         break;
       }
       case "Music":{
         this.genreId = 10402;
         this.subTitle = "Música";
+        this.headerImage = "https://imagenes.20minutos.es/files/article_amp/files/fp/uploads/2019/04/10/78994.r_d.300-169.jpg";
         break;
       }
       case "Mistery":{
         this.genreId = 9648;
         this.subTitle = "Misterio";
+        this.headerImage = "https://www.elgatoquepesca.com/wp-content/uploads/2016/12/prisoners-afiche-cierre.jpg";
         break;
       }
       case "Romance":{
