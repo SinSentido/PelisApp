@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SignService} from '../../../services/sign.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private signService: SignService,
+    private router: Router) { }
 
   ngOnInit() {
+  }
+
+  closeSession(){
+    this.signService.closeSession();
+    this.router.navigateByUrl("/login");
   }
 
 }

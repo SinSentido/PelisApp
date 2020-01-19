@@ -35,3 +35,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn{
+  border: 1px solid white;
+  padding: 2%;
+  color: white;
+}
+
+.btn:hover{
+  background-color: white;
+  color: black;
+}

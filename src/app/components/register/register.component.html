@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="register-image">
+
+  </div>
+
+  <form (ngSubmit)="register()" action="index.html" method="post">
+    <h1>Registro</h1>
+    <hr>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" [(ngModel)]="email">
+
+    <label for="userName">Usuario</label>
+    <input type="text" name="userName" [(ngModel)]="userName">
+
+    <label for="pass">Contraseña</label>
+    <input type="password" name="pass" [(ngModel)]="password">
+
+    <button class="btn btn-outline-success" type="submit" name="register">Registrarse</button>
+    <hr>
+
+    <a [routerLink]="['/login']">Volver a iniciar sesión</a>
+  </form>
+
+</div>

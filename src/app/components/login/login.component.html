@@ -3,19 +3,16 @@
 
   <div class="login-box">
     <h2>LOGIN</h2>
-    <form class="login-form" action="index.html" method="post">
+    <form (ngSubmit)="login()" class="login-form" action="index.html" method="post">
       <label for="email-address">Email address</label>
-      <input type="email" name="email-address">
+      <input type="email" name="email-address" [(ngModel)]="email">
 
       <label for="user-password">Password</label>
-      <input type="password" name="user-password">
+      <input type="password" name="user-password" [(ngModel)]="password">
 
-      <button type="submit" name="button">LOGIN</button>
+      <button class="btn" type="submit" name="button">LOGIN</button>
 
-      <p>or</p>
-
-
-      <p>Create account</p>
+      <a [routerLink]="['/register']">Create account</a>
     </form>
   </div>
 
