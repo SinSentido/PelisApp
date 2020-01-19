@@ -28,6 +28,7 @@ export class TmdbService {
     return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' + this.tmdbApiKey + '&language=en-US');
   }
 
-
+  requestMovieById(movieId: string): any{
+    return this.http.get('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=' + this.tmdbApiKey + '&language=en-US');
+  }
 }
- 

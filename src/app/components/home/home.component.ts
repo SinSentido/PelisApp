@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TmdbService} from '../../services/tmdb.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
   movieTrailerKey = "";
   trailerURL = "";
 
-  constructor(private tmdb: TmdbService, private sanitizer: DomSanitizer) { }
+  constructor(private tmdb: TmdbService, private sanitizer: DomSanitizer,
+    private router: Router) { }
 
   ngOnInit() {
     this.getMovies();
@@ -122,7 +124,13 @@ export class HomeComponent implements OnInit {
   }
 
   navigateToMovie(movieId: number){
-    console.log(movieId);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "id": movieId
+      }
+    };
+
+    this.router.navigate(["movie"], navigationExtras);
   }
 
   selectGenre(){
